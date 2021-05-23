@@ -1,4 +1,3 @@
-######################################
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.response import Response
@@ -64,7 +63,7 @@ def diary_world(request):
                 data.append("</tbody></tr></td>")
                 #ブラウザに改行を送付
                 data.append("<br>")
-                #data.append("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>")
+                data.append("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>")
                 data.append("</td></tr>")
             conn.commit()
             print(str(data))
@@ -78,5 +77,5 @@ if __name__ == '__main__':
         config.add_route('diary', '/')
         config.add_view(diary_world, route_name='diary',renderer="jsonp")
         app = config.make_wsgi_app()
-    server = make_server("localhost", 6543, app)
+    server = make_server('0.0.0.0', 6543, app)
     server.serve_forever()
