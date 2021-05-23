@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<HTML lang="ja">
+<HEAD>
+    <meta charset="UTF-8">
+//<META HTTP-EQuiv="Content-Type" Content="text/html; charset=Shift_JIS">
+<TITLE>Sample</TITLE>
+</HEAD>
+<BODY>
+<b>記録ノート</b>
+<BR>
+<BR>
+  <TABLE WIDTH=80%%>
+    <TR>
+      <TD COLSPAN=2>
+        <FORM METHOD="post" ACTION="http://localhost:6543">
+          <p>メモ帳への入力：
+          <div>   日付     <INPUT TYPE="text" NAME="date"> </div>
+          <div>   名前     <INPUT TYPE="text" NAME="name"></div>
+          <div>   天気     <INPUT TYPE="text" NAME="weather"></div>
+          <div>   種類     <INPUT TYPE="text" NAME="kind"></div>
+          <div>   検索キー <INPUT TYPE="text" NAME="match_word"></div>
+          <div>   削除キー <input id="ex_box" INPUT TYPE="text" NAME="delkey" disabled /></div>
+            <BR>
+          </p>
+            <select name="action" id="action">
+            <option value="view">表示</option>
+            <option value="add">追加登録</option>
+            <option value="delete">削除</option>
+            <option value="srch">検索</option>
+            </select>
+            <script>
+            document.getElementById("action").addEventListener("change", function(){
+            var age_elem = document.getElementById("action");
+            var s_value = age_elem.options[age_elem.selectedIndex].value;
+             var box_elem = document.getElementById("ex_box");
+            if(s_value == "delete"){
+            box_elem.disabled = false;
+            }else{
+            box_elem.disabled = true;
+            }
+            }, false);
+            </script>
+          <p><FONT COLOR=#0000BB>内容：</FONT><BR>
+            <TEXTAREA NAME="Contents" ROWS=10 COLS=50></TEXTAREA>
+            <BR>
+          </p>
+            <INPUT TYPE="submit" VALUE="登録">
+            <INPUT TYPE="reset" VALUE="クリア">
+        </FORM>
+      </TD>
+    </TR>
+  </TABLE>
+</CENTER>
+<P>
+<CENTER>
+</CENTER>
+</BODY>
+</HTML>
