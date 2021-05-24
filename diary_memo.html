@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<HTML lang="ja">
-<HEAD>
+<!DOCtype html>
+<html lang="ja">
+<head>
     <meta charset="UTF-8">
-//<META HTTP-EQuiv="Content-Type" Content="text/html; charset=Shift_JIS">
-<TITLE>Sample</TITLE>
-</HEAD>
-<BODY>
+<title>Sample</title>
+</head>
+<body>
 <b>記録ノート</b>
-<BR>
-<BR>
-  <TABLE WIDTH=80%%>
-    <TR>
-      <TD COLSPAN=2>
-        <FORM METHOD="post" ACTION="http://localhost:6543">
+<br>
+<br>
+  <table width=80%%>
+    <tr>
+      <td COLSPAN=2>
+        <form method="post" action="http://localhost:6543">
           <p>メモ帳への入力：
-          <div>   日付     <INPUT TYPE="text" NAME="date"> </div>
-          <div>   名前     <INPUT TYPE="text" NAME="name"></div>
-          <div>   天気     <INPUT TYPE="text" NAME="weather"></div>
-          <div>   種類     <INPUT TYPE="text" NAME="kind"></div>
-          <div>   検索キー <INPUT TYPE="text" NAME="match_word"></div>
-          <div>   削除キー <input id="ex_box" INPUT TYPE="text" NAME="delkey" disabled /></div>
-            <BR>
+          <div>   日付     <input type="text" name="date"> </div>
+          <div>   名前     <input type="text" name="name"></div>
+          <div>   天気     <input type="text" name="weather"></div>
+          <div>   種類     <input type="text" name="kind"></div>
+          <div>   検索キー <input type="text" name="match_word"></div>
+          <div>   削除キー <input id="ex_box" input type="text" name="delkey" disabled /></div>
+            <br>
           </p>
             <select name="action" id="action">
             <option value="view">表示</option>
@@ -40,19 +39,19 @@
             }
             }, false);
             </script>
-          <p><FONT COLOR=#0000BB>内容：</FONT><BR>
-            <TEXTAREA NAME="Contents" ROWS=10 COLS=50></TEXTAREA>
-            <BR>
+          <p><font color=#0000BB>内容：</font><br>
+            <textarea name="Contents" ROWS=10 COLS=50></textarea>
+            <br>
           </p>
-            <INPUT TYPE="submit" VALUE="登録">
-            <INPUT TYPE="reset" VALUE="クリア">
-        </FORM>
-      </TD>
-    </TR>
-  </TABLE>
-</CENTER>
+            <input type="submit" value="登録">
+            <input type="reset" value="クリア">
+        </form>
+      </td>
+    </tr>
+  </table>
+</center>
 <P>
-<CENTER>
-</CENTER>
-</BODY>
-</HTML>
+<center>
+</center>
+</body>
+</html>
