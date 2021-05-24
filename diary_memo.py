@@ -1,9 +1,11 @@
+from sqlite3.dbapi2 import Row
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.response import Response
 import signal
 import sqlite3
 from contextlib import closing
+import re
 dbname = 'database.db'
 def diary_world(request):
     print(request.params)
@@ -13,6 +15,7 @@ def diary_world(request):
     weather=in_data["weather"]
     kind=in_data["kind"]
     Contents=in_data["Contents"]
+    Contents = ''.join(Contents.split())
     match_word = in_data["match_word"]
     if ("delkey" in in_data)==True:
         delkey=in_data["delkey"]
