@@ -48,6 +48,10 @@ def diary_world(request):
                 select_sql = 'delete  from users where id ='+ str(delkey)
                 c.execute(select_sql)
                 data="削除しました"
+        elif action == "delall":#削除all
+                select_sql = 'delete  from users'
+                c.execute(select_sql)
+                data="全レコード削除しました"
         else:
             pass
         #検索レコード表示

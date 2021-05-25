@@ -26,17 +26,24 @@
             <option value="add">追加登録</option>
             <option value="delete">削除</option>
             <option value="srch">検索</option>
+            <option value="delall">全削除</option>
             </select>
             <script>
-            document.getElementById("action").addEventListener("change", function(){
-            var age_elem = document.getElementById("action");
-            var s_value = age_elem.options[age_elem.selectedIndex].value;
-             var box_elem = document.getElementById("ex_box");
-            if(s_value == "delete"){
-            box_elem.disabled = false;
-            }else{
-            box_elem.disabled = true;
-            }
+              document.getElementById("action").addEventListener("change", function(){
+              var age_elem = document.getElementById("action");
+              var s_value = age_elem.options[age_elem.selectedIndex].value;
+              var box_elem = document.getElementById("ex_box");
+              if(s_value == "delete"){
+                box_elem.disabled = false;
+              } else{
+                box_elem.disabled = true;
+              }
+
+              if(s_value == "delall"){
+                alert('削除の選択ですね？');
+              }
+
+
             }, false);
             </script>
           <p><font color=#0000BB>内容：</font><br>
