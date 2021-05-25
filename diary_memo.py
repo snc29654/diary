@@ -15,6 +15,7 @@ def diary_world(request):
     weather=in_data["weather"]
     kind=in_data["kind"]
     Contents=in_data["Contents"]
+    print(Contents)
     Contents = ''.join(Contents.split())
     match_word = in_data["match_word"]
     if ("delkey" in in_data)==True:
@@ -60,7 +61,7 @@ def diary_world(request):
         try:
             data.append("<table border =\"3\">")
             for row in c.execute(select_sql):
-                print(row)
+                #print(row)
                 data.append("<tbody><tr><td>")
                 data.append(row)
                 data.append("</tbody></tr></td>")
