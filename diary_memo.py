@@ -6,7 +6,7 @@ import signal
 import sqlite3
 from contextlib import closing
 import re
-dbname = 'database.db'
+dbname = '../database.db'
 def diary_world(request):
     print(request.params)
     in_data=request.params
