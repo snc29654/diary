@@ -60,6 +60,9 @@ def diary_world(request):
             select_sql = 'select * from users where Contents like '+'"%'+str(match_word)+'%"'
         elif action == "keyview":#指定キー表示
             select_sql = 'select * from users where id ='+ str(match_key)
+        elif action == "kindview":#種類検索
+            print(kind)
+            select_sql = 'select * from users where kind ='+ '"'+str(kind)+'"'
         else:
         #全レコード表示
             select_sql = 'select * from users'
