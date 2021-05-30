@@ -1,4 +1,4 @@
-from sqlite3.dbapi2 import Row
+from sqlite3.dbapi2 import Row, paramstyle
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.response import Response
@@ -18,6 +18,7 @@ def diary_world(request):
     print(Contents)
     Contents = ''.join(Contents.split())
     match_word = in_data["match_word"]
+    match_key = in_data["match_key"]
     if ("delkey" in in_data)==True:
         delkey=in_data["delkey"]
     else:
@@ -54,9 +55,11 @@ def diary_world(request):
                 data="全レコード削除しました"
         else:
             pass
-        #検索レコード表示
+        #検索ワード表示
         if action == "srch":#検索
             select_sql = 'select * from users where Contents like '+'"%'+str(match_word)+'%"'
+        elif action == "keyview":#指定キー表示
+            select_sql = 'select * from users where id ='+ str(match_key)
         else:
         #全レコード表示
             select_sql = 'select * from users'
