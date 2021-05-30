@@ -17,6 +17,8 @@ def diary_world(request):
     Contents=in_data["Contents"]
     print(Contents)
     Contents = ''.join(Contents.split())
+    if ('<' in Contents) == True:
+        return Response(str("<は許されない文字です"))
     match_word = in_data["match_word"]
     match_key = in_data["match_key"]
     if ("delkey" in in_data)==True:
