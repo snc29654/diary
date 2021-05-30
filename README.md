@@ -2,6 +2,6 @@
 
 html          python
 --------------------- 
-windows       windosw
+windows       windows
 windows       linux
 linux         kinux
