@@ -26,6 +26,7 @@ def diary_world(request):
     else:
         delkey=""
     action =in_data["action"]
+    all_or_select=in_data["action2"]
     with closing(sqlite3.connect(dbname)) as conn:
         c = conn.cursor()
         create_table = '''create table users (id INTEGER PRIMARY KEY,date varchar(64), name varchar(64),
@@ -73,7 +74,10 @@ def diary_world(request):
         try:
             data.append("<table border =\"3\">")
             for row in c.execute(select_sql):
-                #print(row)
+                if all_or_select == "select":
+                    row=row[:5]
+                print("row=")
+                print(row)
                 data.append("<tbody><tr><td>")
                 data.append(row)
                 data.append("</tbody></tr></td>")
