@@ -16,7 +16,7 @@
           <div>   日付     <input type="text" name="date"> </div>
           <div>   名前     <input type="text" name="name"></div>
           <div>   天気     <input type="text" name="weather"></div>
-          <div>   種類     <input type="text" name="kind"></div>
+          <div>   題名     <input type="text" name="kind"></div>
           <div>   指定キー <input type="text" name="match_key"></div>
           <div>   検索ワード <input type="text" name="match_word"></div>
           <div>   削除キー <input id="ex_box" input type="text" name="delkey" disabled /></div>
@@ -28,10 +28,14 @@
             <option value="delete">指定キー削除</option>
             <option value="srch">検索ワード表示</option>
             <option value="keyview">指定キー表示</option>
-            <option value="kindview">種類検索</option>
+            <option value="kindview">題名検索</option>
             <option value="delall">全削除</option>
             </select>
-            <script>
+            <select name="action2" id="action2">
+              <option value="all">内容含み</option>
+              <option value="select">題名のみ</option>
+              </select>
+              <script>
               document.getElementById("action").addEventListener("change", function(){
               var age_elem = document.getElementById("action");
               var s_value = age_elem.options[age_elem.selectedIndex].value;
