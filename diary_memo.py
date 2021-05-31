@@ -14,6 +14,7 @@ def diary_world(request):
     name=in_data["name"]
     weather=in_data["weather"]
     kind=in_data["kind"]
+    kind = ''.join(kind.split())
     Contents=in_data["Contents"]
     print(Contents)
     Contents = ''.join(Contents.split())
