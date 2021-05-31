@@ -4,6 +4,7 @@ from pyramid.config import Configurator
 from pyramid.response import Response
 import signal
 import sqlite3
+import datetime
 from contextlib import closing
 import re
 dbname = '../database.db'
@@ -11,6 +12,9 @@ def diary_world(request):
     print(request.params)
     in_data=request.params
     date=in_data["date"]
+    if date =="":
+        now = datetime.datetime.now()
+        date = now
     name=in_data["name"]
     weather=in_data["weather"]
     kind=in_data["kind"]
