@@ -16,8 +16,15 @@ def diary_world(request):
         now = datetime.datetime.now()
         date = now
     name=in_data["name"]
+    if name =="":
+        name="未入力"
     weather=in_data["weather"]
+    if weather =="":
+        weather="未入力"
     kind=in_data["kind"]
+    if kind =="":
+        kind="未入力"
+
     kind = ''.join(kind.split())
     Contents=in_data["Contents"]
     print(Contents)
