@@ -19,7 +19,7 @@ def  data_print(url):
     data = BeautifulSoup(site.text, 'html.parser')
     find_data=data.find_all("p")
     #print(find_data)
-    return(find_data)
+    return(data)
     
 def diary_world(request):
     print(request.params)
@@ -77,8 +77,7 @@ def diary_world(request):
             print(scraping_url)
             scraping_contents=data_print(scraping_url)
             print(scraping_contents)
-            #Contents = scraping_contents
-            #Contents=jaconv.h2z(scraping_contents, kana=False, ascii=True, digit=False)
+            Contents = scraping_contents
             """
             insert_sql = 'insert into users (date, name, weather, kind, Contents) values (?,?,?,?,?)'
             users = [
@@ -128,7 +127,7 @@ def diary_world(request):
         except:
             print("data not found")
     if action == "scrape":        
-        return Response(str(scraping_contents))
+        return Response(str(Contents))
     else:
         return Response(str(data))
 
