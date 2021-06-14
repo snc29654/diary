@@ -9,7 +9,7 @@ from contextlib import closing
 import re
 import requests
 from bs4 import BeautifulSoup
-
+import jaconv
 
 dbname = '../database.db'
 def  data_print(url):
@@ -77,10 +77,10 @@ def diary_world(request):
             print(scraping_url)
             scraping_contents=data_print(scraping_url)
             print(scraping_contents)
-            data = scraping_contents
-            Response(str(data))
+            #Contents = scraping_contents
+            #Contents=jaconv.h2z(scraping_contents, kana=False, ascii=True, digit=False)
             """
-            insert_sql = 'insert into users (date, name, weather, kind, scraping_contents) values (?,?,?,?,?)'
+            insert_sql = 'insert into users (date, name, weather, kind, Contents) values (?,?,?,?,?)'
             users = [
             (date, name, weather, kind, Contents)
             ]
@@ -127,7 +127,12 @@ def diary_world(request):
             print(str(data))
         except:
             print("data not found")
-    return Response(str(data))
+    if action == "scrape":        
+        return Response(str(scraping_contents))
+    else:
+        return Response(str(data))
+
+
     #実行処理  python サーバーを立てています
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal.SIG_DFL)
