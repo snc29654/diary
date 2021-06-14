@@ -1,4 +1,4 @@
-from sqlite3.dbapi2 import Row, paramstyle
+from sqlite3.dbapi2 import DatabaseError, Row, paramstyle
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.response import Response
@@ -7,7 +7,20 @@ import sqlite3
 import datetime
 from contextlib import closing
 import re
+import requests
+from bs4 import BeautifulSoup
+
+
 dbname = '../database.db'
+def  data_print(url):
+    import requests
+
+    site = requests.get(url)
+    data = BeautifulSoup(site.text, 'html.parser')
+    find_data=data.find_all("p")
+    #print(find_data)
+    return(find_data)
+    
 def diary_world(request):
     print(request.params)
     in_data=request.params
@@ -52,22 +65,36 @@ def diary_world(request):
             if delkey == "表示":
                 pass
         elif action == "add":#追加
-                insert_sql = 'insert into users (date, name, weather, kind, Contents) values (?,?,?,?,?)'
-                users = [
-                (date, name, weather, kind, Contents)
-                ]
-#この場合登録一件ですから、excutemanyでなくてもいいかも？
-#これはpythonでのサポート機能のようで、多量のレコードを一気に登録するときに役立つようです
-                c.executemany(insert_sql, users)
+            insert_sql = 'insert into users (date, name, weather, kind, Contents) values (?,?,?,?,?)'
+            users = [
+            (date, name, weather, kind, Contents)
+            ]
+            #この場合登録一件ですから、excutemanyでなくてもいいかも？
+            #これはpythonでのサポート機能のようで、多量のレコードを一気に登録するときに役立つようです
+            c.executemany(insert_sql, users)
+        elif action == "scrape":#スクレいピング
+            scraping_url = in_data["scraping_url"]
+            print(scraping_url)
+            scraping_contents=data_print(scraping_url)
+            print(scraping_contents)
+            data = scraping_contents
+            Response(str(data))
+            """
+            insert_sql = 'insert into users (date, name, weather, kind, scraping_contents) values (?,?,?,?,?)'
+            users = [
+            (date, name, weather, kind, Contents)
+            ]
+            c.executemany(insert_sql, users)
+            """
         elif action == "delete":#削除
-                #キー指定して削除する
-                select_sql = 'delete  from users where id ='+ str(delkey)
-                c.execute(select_sql)
-                data="削除しました"
+            #キー指定して削除する
+            select_sql = 'delete  from users where id ='+ str(delkey)
+            c.execute(select_sql)
+            data="削除しました"
         elif action == "delall":#削除all
-                select_sql = 'delete  from users'
-                c.execute(select_sql)
-                data="全レコード削除しました"
+            select_sql = 'delete  from users'
+            c.execute(select_sql)
+            data="全レコード削除しました"
         else:
             pass
         #検索ワード表示
