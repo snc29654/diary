@@ -1,1 +1,2 @@
 htmlとpythonはwindowsでもlinuxでもOKです
+スクレイピングデバッグ中
