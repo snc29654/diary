@@ -17,9 +17,9 @@ def  data_print(url):
 
     site = requests.get(url)
     data = BeautifulSoup(site.text, 'html.parser')
-    find_data=data.find_all("p")
+    find_data=data.find_all("a")
     #print(find_data)
-    return(data)
+    return(find_data)
     
 def diary_world(request):
     print(request.params)
@@ -78,6 +78,7 @@ def diary_world(request):
             scraping_contents=data_print(scraping_url)
             print(scraping_contents)
             Contents = scraping_contents
+            
             """
             insert_sql = 'insert into users (date, name, weather, kind, Contents) values (?,?,?,?,?)'
             users = [
