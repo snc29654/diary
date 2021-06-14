@@ -1,2 +1,2 @@
 htmlとpythonはwindowsでもlinuxでもOKです
-スクレイピングデバッグ中
+スクレイピングデバッグ中でデータはDBに追加されません
