@@ -129,12 +129,6 @@ def btn_click10():
     textExample.insert(tkinter.END,text2)
 
     return data_exist
-#combovalue = "all"
-#def show_selected(event):       #eventを引数に
-#    global combovalue
-#    combovalue=test_combobox.get()
-#    print(combovalue)  #選択した値を表示
-
 
 
 #指定キー表示
@@ -177,8 +171,6 @@ def btn_click8():
     textExample.insert(tkinter.END,text2)
 
     return data_exist
-
-
 #追加
 def btn_click2():
     txt.delete(0,tkinter.END)
@@ -209,12 +201,6 @@ def btn_click2():
         c.executemany(insert_sql, users)
  
         conn.commit()
-    #else:
-    #    print("既に登録済")
-
-    #    textExample.delete("1.0",tkinter.END)
-
-    #    textExample.insert(tkinter.END,"既に登録済")
 
 def  data_print():
     import requests
@@ -247,13 +233,6 @@ def btn_click2_scraping():
         ]
         c.executemany(insert_sql, users)
         conn.commit()
-    #else:
-    #    print("既に登録済")
-
-    #    textExample.delete("1.0",tkinter.END)
-
-    #    textExample.insert(tkinter.END,"既に登録済")
-
 
 
 #テキストボックスクリア
@@ -333,49 +312,15 @@ def btn_click5():
 
                 print("data not found")
 
-
-
         textExample.delete("1.0",tkinter.END)
 
         textExample.insert(tkinter.END,"削除しました")
 
-       
-
-# ボタン
-#btn = tkinter.Button(root, text='キーワード検索', command=btn_click)
-#btn.place(x=300, y=10)
-
-#btn2 = tkinter.Button(root, text='追加', command=btn_click2)
-#btn2.place(x=10, y=110)
-
 btn3 = tkinter.Button(root, text='入力クリア', command=btn_click3)
 btn3.place(x=10, y=570)
 
-#btn4 = tkinter.Button(root, text='キー指定削除', command=btn_click4)
-#btn4.place(x=10, y=150)
-
-#btn5 = tkinter.Button(root, text='全削除', command=btn_click5)
-#btn5.place(x=10, y=180)
-
-#btn6 = tkinter.Button(root, text='フォント大', command=btn_click6)
-#btn6.place(x=10, y=210)
-
-#btn7 = tkinter.Button(root, text='フォント小', command=btn_click7)
-#btn7.place(x=10, y=240)
-
-#btn8 = tkinter.Button(root, text='キー指定表示', command=btn_click8)
-#btn8.place(x=10, y=270)
-
-#btn9 = tkinter.Button(root, text='キー指定更新', command=btn_click9)
-#btn9.place(x=10, y=300)
-
-#btn10 = tkinter.Button(root, text='全record表示', command=btn_click10)
-#btn10.place(x=10, y=330)
-
-
 btn11 = tkinter.Button(root, text='scraping追加', command=btn_click2_scraping)
 btn11.place(x=10, y=360)
-
 
 # 画面サイズ
 root.geometry('1000x750')
@@ -393,42 +338,14 @@ lbl3.place(x=10, y=40)
 lbl2 = tkinter.Label(text='メモ')
 lbl2.place(x=10, y=70)
 
-
-
 # テキストボックス
 txt = tkinter.Entry(width=30)
 txt.place(x=90, y=10)
 txt.insert(tkinter.END,"")
 
-# テキストボックス
-#txt2 = tkinter.Entry(width=42)
-#txt2.place(x=400, y=10)
-#txt2.insert(tkinter.END,"")
-
-
 txt_url = tkinter.Entry(width=80)
 txt_url.place(x=120, y=40)
 txt_url.insert(tkinter.END,"")
-
-
-#root = tkinter.Tk()
-
-#item_list = ['all', 'header']
-#test_combobox = ttk.Combobox(
-#    master=root,
-#    values=item_list,
-#    )
-
-#値選択時に発生するイベントと関数を紐づけ
-#test_combobox.bind(
-#    '<<ComboboxSelected>>',     #選択時に発生するイベント
-#    show_selected,              #呼び出す関数
-#)
-
-#test_combobox.current(0)
-#test_combobox.pack()
-
-
 
 # 表示
 root.mainloop()
