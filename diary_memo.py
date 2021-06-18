@@ -40,6 +40,7 @@ def diary_world(request):
 
     kind = ''.join(kind.split())
     Contents=in_data["Contents"]
+
     print(Contents)
     Contents = ''.join(Contents.split())
     if ('<' in Contents) == True:
@@ -51,6 +52,10 @@ def diary_world(request):
     else:
         delkey=""
     action =in_data["action"]
+    if (Contents == "") and (action=="add"):
+        return Response(str("記事が空です"))
+
+
     all_or_select=in_data["action2"]
     with closing(sqlite3.connect(dbname)) as conn:
         c = conn.cursor()
