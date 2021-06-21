@@ -345,7 +345,6 @@ txt.insert(tkinter.END,"")
 
 txt_url = tkinter.Entry(width=80)
 txt_url.place(x=120, y=40)
-txt_url.insert(tkinter.END,"")
-
+txt_url.insert(tkinter.END,"https://news.yahoo.co.jp/topics/top-picks")
 # 表示
 root.mainloop()
