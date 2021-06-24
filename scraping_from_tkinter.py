@@ -103,6 +103,31 @@ txt.insert(tkinter.END,"")
 
 txt_url = tkinter.Entry(width=80)
 txt_url.place(x=120, y=40)
-txt_url.insert(tkinter.END,"https://news.yahoo.co.jp/topics/top-picks")
+txt_url.insert(tkinter.END,"")
 # 表示
+
+
+
+def show_selected(event):
+    global tkinter
+    global txt_url
+    n = lb.curselection()   
+    data=lb.get(n)        
+    txt_url.delete(0,tkinter.END)
+    txt_url.insert(tkinter.END,data)
+    print (data)
+
+
+lb = tkinter.Listbox(root,width=55)
+lb.insert(0, "https://news.yahoo.co.jp/topics/top-picks")    
+lb.insert(1, "https://news.yahoo.co.jp/")
+lb.insert(2, "https://news.yahoo.co.jp/ranking/access/news")
+
+
+lb.bind(
+    "<<ListboxSelect>>",
+    show_selected,
+    )
+lb.pack()
+
 root.mainloop()
