@@ -25,6 +25,7 @@ def diary_world(request):
     print(request.params)
     in_data=request.params
     date=in_data["date"]
+    today = datetime.date.today()
     if date =="":
         now = datetime.datetime.now()
         date = now
@@ -105,6 +106,8 @@ def diary_world(request):
         #検索ワード表示
         if action == "srch":#検索
             select_sql = 'select * from users where Contents like '+'"%'+str(match_word)+'%"'
+        if action == "today":#検索
+            select_sql = 'select * from users where date like '+'"%'+str(today)+'%"'
         elif action == "keyview":#指定キー表示
             select_sql = 'select * from users where id ='+ str(match_key)
         elif action == "lastview":#最後キー表示
