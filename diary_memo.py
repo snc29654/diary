@@ -106,7 +106,7 @@ def diary_world(request):
         #検索ワード表示
         if action == "srch":#検索
             select_sql = 'select * from users where Contents like '+'"%'+str(match_word)+'%"'
-        if action == "today":#検索
+        elif action == "today":#検索
             select_sql = 'select * from users where date like '+'"%'+str(today)+'%"'
         elif action == "keyview":#指定キー表示
             select_sql = 'select * from users where id ='+ str(match_key)
