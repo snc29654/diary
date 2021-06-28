@@ -107,7 +107,7 @@ def diary_world(request):
         if action == "srch":#検索
             select_sql = 'select * from users where Contents like '+'"%'+str(match_word)+'%"'
         elif action == "count":#検索
-            select_sql =  'select (length(Contents) - length(replace(Contents, '+'\''+str(match_word)+'\''+', \'\'))) / length('+'\''+str(match_word)+'\''+') as cnt from users'
+            select_sql =  'select id,date,(length(Contents) - length(replace(Contents, '+'\''+str(match_word)+'\''+', \'\'))) / length('+'\''+str(match_word)+'\''+') as cnt from users'
         elif action == "today":#検索
             select_sql = 'select * from users where date like '+'"%'+str(today)+'%"'
         elif action == "keyview":#指定キー表示
