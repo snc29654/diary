@@ -119,6 +119,7 @@ def show_selected(event):
 
 
 lb = tkinter.Listbox(root,width=55)
+
 lb.insert(0, "https://news.yahoo.co.jp/topics/top-picks")    
 lb.insert(1, "https://news.yahoo.co.jp/")
 lb.insert(2, "https://news.yahoo.co.jp/ranking/access/news")
@@ -129,5 +130,6 @@ lb.bind(
     show_selected,
     )
 lb.pack()
+lb.place(x=300, y=70)
 
 root.mainloop()
