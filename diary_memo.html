@@ -6,6 +6,18 @@
     <link rel="stylesheet" href="sample.css" type="text/css">
 </head>
 <body>
+  <script>
+  var today=new Date(); 
+
+  var year = today.getFullYear();
+  var month = today.getMonth()+1;
+  var week = today.getDay();
+  var day = today.getDate();
+  
+  var week_ja= new Array("日","月","火","水","木","金","土");
+  
+  document.write(year+"年"+month+"月"+day+"日 "+week_ja[week]+"曜日");
+</script>
 <b>記録ノート</b>
 <br>
 <br>
@@ -57,6 +69,7 @@
 
 
             }, false);
+
             </script>
           <div>   題名     <input type="text" name="kind"></div>
           <p><font color=#0000BB>内容：</font><br>
@@ -66,6 +79,7 @@
             <input type="submit" value="登録">
             <input type="reset" value="クリア">
         </form>
+        <input type="date">
       </td>
     </tr>
   </table>
