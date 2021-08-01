@@ -83,15 +83,13 @@ def diary_world(request):
             print("●●●●●●●●●●●●●●●●●●●●●●●●●")
             print(scraping_url)
             scraping_contents=data_print(scraping_url)
-            Contents = scraping_contents
+            Contents = str(scraping_contents)
             print(Contents)
-            """
             insert_sql = 'insert into users (date, name, weather, kind, Contents) values (?,?,?,?,?)'
             users = [
             (date, name, weather, kind, Contents)
             ]
             c.executemany(insert_sql, users)
-            """
         elif action == "delete":#削除
             #キー指定して削除する
             select_sql = 'delete  from users where id ='+ str(delkey)
