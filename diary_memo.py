@@ -80,6 +80,10 @@ def diary_world(request):
             c.executemany(insert_sql, users)
         elif action == "scrape":#スクレいピング
             scraping_url = in_data["scraping_url"]
+
+            if kind =="未入力":
+                kind = scraping_url
+
             print("●●●●●●●●●●●●●●●●●●●●●●●●●")
             print(scraping_url)
             scraping_contents=data_print(scraping_url)
