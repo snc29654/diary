@@ -1,2 +1,2 @@
 htmlとpythonはwindowsでもlinuxでもOKです
-スクレイピングデバッグ中でデータはDBに追加されません
+ブラウザからのスクレイピングでpython処理のscraping結果がsqlite3のdbに格納される
