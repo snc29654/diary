@@ -16,7 +16,7 @@ def  data_print(url):
     import requests
 
     site = requests.get(url)
-    data = BeautifulSoup(site.text, 'html.parser')
+    data = BeautifulSoup(site.content, 'html.parser')
     find_data=data.find_all("a")
     #print(find_data)
     return(find_data)
