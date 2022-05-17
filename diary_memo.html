@@ -32,13 +32,13 @@
           <div>   指定キー（このキーのみ表示） <input type="text" name="match_key"></div>
           <div>   検索ワード（内容から検索） <input type="text" name="match_word"></div>
           <div>   削除キー <input id="ex_box" input type="text" name="delkey" disabled /></div>
-          <div>   スクレいピングURL <input type="text" size="50" name="scraping_url" value="https://news.yahoo.co.jp/topics/top-picks"></div>
+          <div>   スクレいピングURL <input type="text" size="50" name="scraping_url" value=""></div>
             <br>
           </p>
             <select name="action" id="action">
+            <option value="scrape">スクレイピング</option>
             <option value="view">全表示</option>
             <option value="add">追加登録</option>
-            <option value="scrape">スクレイピング</option>
             <option value="delete">指定キー削除</option>
             <option value="srch">検索ワード表示</option>
             <option value="count">検索ワード件数</option>
@@ -48,6 +48,17 @@
             <option value="lastview">最後のレコード</option>
             <option value="delall">全削除</option>
             </select>
+
+
+            <select name="scrapeaction" id="scrapeaction">
+            <option value="https://news.yahoo.co.jp/topics/top-picks">yahooトップ</option>
+            <option value="https://news.yahoo.co.jp/categories/entertainment">yahooエンタメ</option>
+            <option value="https://news.yahoo.co.jp/categories/sports">yahooスポーツ</option>
+            <option value="https://news.yahoo.co.jp/categories/business">yahoo　経済</option>
+            <option value="https://news.yahoo.co.jp/categories/it">yahoo　IT</option>
+            </select>
+
+
             <select name="action2" id="action2">
               <option value="all">内容含み</option>
               <option value="select">題名のみ</option>
