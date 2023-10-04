@@ -9,7 +9,6 @@ from contextlib import closing
 import re
 import requests
 from bs4 import BeautifulSoup
-import jaconv
 
 import webbrowser
 
