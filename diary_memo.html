@@ -25,14 +25,14 @@
     <tr>
       <td COLSPAN=2>
         <form method="post" target="_blank" action="http://localhost:6543">
-          <p>メモ帳への入力：
-          <div>   日付     <input type="text" name="date"> </div>
-          <div>   名前     <input type="text" name="name"></div>
-          <div>   天気     <input type="text" name="weather"></div>
-          <div>   指定キー（このキーのみ表示） <input type="text" name="match_key"></div>
-          <div>   検索ワード（内容から検索） <input type="text" name="match_word"></div>
-          <div>   削除キー <input id="ex_box" input type="text" name="delkey" disabled /></div>
-          <div>   スクレいピングURL <input type="text" size="50" name="scraping_url" value=""></div>
+          <p><div class="txt2"> メモ帳への入力：</div>
+            <div class="txt1">    日付     <input class="txt3" type="text" name="date"> </div>
+            <div class="txt1">    名前     <input class="txt3" type="text" name="name"></div>
+            <div class="txt1">    天気     <input class="txt3" type="text" name="weather"></div>
+            <div class="txt1">    指定キー（このキーのみ表示） <input class="txt3" type="text" name="match_key"></div>
+            <div class="txt1">    検索ワード（内容から検索） <input class="txt3" type="text" name="match_word"></div>
+            <div class="txt1">    削除キー <input id="ex_box" input class="txt3" type="text" name="delkey" disabled /></div>
+            <div class="txt1">    スクレいピングURL <input class="txt3" type="text" size="50" name="scraping_url" value=""></div>
             <br>
           </p>
             <select name="action" id="action">
@@ -82,12 +82,12 @@
             }, false);
 
             </script>
-          <div class="txt1">   題名     <input type="text" name="kind"></div>
-          <p><div class="txt2">内容：<br></div>
+          <div class="txt1">   題名     <input class="txt3" type="text" name="kind"></div>
+          <p><div class="txt1">内容：<br></div>
             <textarea class="txt3" name="Contents" ROWS=10 COLS=50></textarea>
             <br>
           </p>
-            <input type="submit" value="登録">
+            <input type="submit" value="実行">
             <input type="reset" value="クリア">
         </form>
         <input type="date">
