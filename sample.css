@@ -3,9 +3,20 @@ body {background-image: url("sample1.jpg"); }
     color: #fd0606;
 }
 .txt2{
-    font-size: 40px;
+    font-size: 30px;
     color: #1305dbe1;
 }
 .txt3{
     background-color: #05a9dbe1;
 }
+
+.button1{
+    font-size: 30px;
+    background-color: #ebfb04e1;
+}
+
+.button2{
+    font-size: 30px;
+    background-color: #fb4a04e1;
+}
+
