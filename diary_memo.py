@@ -30,7 +30,7 @@ def  data_print(url):
     return(find_data)
     
 def diary_world(request):
-    print(request.params)
+    #print(request.params)
     in_data=request.params
     date=in_data["date"]
     today = datetime.date.today()
@@ -97,11 +97,11 @@ def diary_world(request):
             if kind =="未入力":
                 kind = scraping_url
 
-            print("●●●●●●●●●●●●●●●●●●●●●●●●●")
-            print(scraping_url)
+            #print("●●●●●●●●●●●●●●●●●●●●●●●●●")
+            #print(scraping_url)
             scraping_contents=data_print(scraping_url)
             Contents = str(scraping_contents)
-            print(Contents)
+            #print(Contents)
             insert_sql = 'insert into users (date, name, weather, kind, Contents) values (?,?,?,?,?)'
             users = [
             (date, name, weather, kind, Contents)
@@ -142,8 +142,8 @@ def diary_world(request):
             for row in c.execute(select_sql):
                 if all_or_select == "select":
                     row=row[:5]
-                print("row=")
-                print(row)
+                #print("row=")
+                #print(row)
                 data.append("<tbody><tr><td>")
                 data.append(row)
                 data.append("</tbody></tr></td>")
@@ -151,7 +151,7 @@ def diary_world(request):
                 data.append("<br>")
                 data.append("</td></tr>")
             conn.commit()
-            print(str(data))
+            #print(str(data))
         except:
             print("data not found")
     if action == "scrape":        
