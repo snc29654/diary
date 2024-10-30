@@ -50,7 +50,7 @@ def diary_world(request):
     kind = ''.join(kind.split())
     Contents=in_data["Contents"]
 
-    print(Contents)
+    #print(Contents)
     Contents = ''.join(Contents.split())
     if ('<' in Contents) == True:
         return Response(str("<は許されない文字です"))
@@ -130,13 +130,13 @@ def diary_world(request):
         elif action == "lastview":#最後キー表示
             select_sql = 'select * from users where id in ( select max( id ) from users )'
         elif action == "kindview":#種類検索
-            print(kind)
+            #print(kind)
             select_sql = 'select * from users where kind like '+ '"%'+str(kind)+'%"'
         else:
         #全レコード表示
             select_sql = 'select * from users'
         data=[]
-        print (select_sql )
+        #print (select_sql )
         try:
             data.append("<table border =\"3\">")
             for row in c.execute(select_sql):
