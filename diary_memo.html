@@ -12,9 +12,25 @@
 <br>
 <br>
   <table width=80%%>
+
+
+
     <tr>
       <td COLSPAN=2>
-        <form method="post" target="_blank" action="http://localhost:6543">
+        サーバーIP<input id="text0" type="text" size="20" value="localhost" />
+
+        <form method="post" id="textaction" target="_blank" action="http://localhost:6543">
+
+          <script>
+            function inData0() {
+              text = document.getElementById("text0");
+              textaction = document.getElementById("textaction");
+              textaction.action="http://"+text.value+":6543";
+            }
+          
+          </script>
+
+          
           <p><div class="txt2"> メモ帳への入力：</div>
             <div class="txt1">    日付     <input class="txt3" type="text" name="date"> </div>
             <div class="txt1">    名前     <input class="txt3" type="text" name="name"></div>
@@ -61,7 +77,7 @@
             <textarea class="txt3" name="Contents" ROWS=10 COLS=50></textarea>
             <br>
           </p>
-            <input class="button1" type="submit" value="実行" >
+            <input class="button1" type="submit" value="実行" onclick="inData0()">
             <input class="button2"  type="reset" value="クリア">
         </form>
         <input type="date">
