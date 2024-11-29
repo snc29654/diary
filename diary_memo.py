@@ -128,6 +128,8 @@ def diary_world(request):
 
             #print("●●●●●●●●●●●●●●●●●●●●●●●●●")
             #print(scraping_url)
+            name="インターネット検索"
+            weather=match_word
             scraping_contents=inet_data_print(match_word)
             Contents = str(scraping_contents)
             #print(Contents)
