@@ -18,6 +18,22 @@ import webbrowser
 dbname = '../database.db'
 
 
+def  inet_data_print(match_word):
+    global zip_code
+
+    params = {'p':match_word,
+          'search.x':'1',
+          'fr':'top_ga1_sa',
+          'tid':'top_ga1_sa',
+          'ei':'UTF-8',
+          'aq':'',
+          'oq':'',
+          'afs':'',}
+
+    r = requests.get("http://search.yahoo.co.jp/search", params=params)
+
+    data = BeautifulSoup(r.content, 'html.parser')
+    return(data)
 
 
 def  data_print(url):
@@ -107,6 +123,21 @@ def diary_world(request):
             (date, name, weather, kind, Contents)
             ]
             c.executemany(insert_sql, users)
+        elif action == "inet_search":#インターネット検索
+
+
+            #print("●●●●●●●●●●●●●●●●●●●●●●●●●")
+            #print(scraping_url)
+            scraping_contents=inet_data_print(match_word)
+            Contents = str(scraping_contents)
+            #print(Contents)
+            insert_sql = 'insert into users (date, name, weather, kind, Contents) values (?,?,?,?,?)'
+            users = [
+            (date, name, weather, kind, Contents)
+            ]
+            c.executemany(insert_sql, users)
+
+
         elif action == "delete":#削除
             #キー指定して削除する
             select_sql = 'delete  from users where id ='+ str(delkey)
@@ -155,6 +186,8 @@ def diary_world(request):
         except:
             print("data not found")
     if action == "scrape":        
+        return Response(str(Contents))
+    elif action == "inet_search":
         return Response(str(Contents))
     else:
         return Response(str(data))
