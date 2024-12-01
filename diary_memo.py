@@ -191,6 +191,8 @@ def diary_world(request):
         return Response(str(Contents))
     elif action == "inet_search":
         return Response(str(Contents))
+    elif action == "add":#追加
+        return Response(str(Contents))
     else:
         return Response(str(data))
 
