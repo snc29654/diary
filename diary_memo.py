@@ -160,6 +160,8 @@ def diary_world(request):
             select_sql = 'select * from users where date like '+'"%'+str(today)+'%"'
         elif action == "keyview":#指定キー表示
             select_sql = 'select * from users where id ='+ str(match_key)
+        elif action == "inet_rireki":#指定キー表示
+            select_sql = 'select * from users where name ="インターネット検索"'
         elif action == "lastview":#最後キー表示
             select_sql = 'select * from users where id in ( select max( id ) from users )'
         elif action == "kindview":#種類検索
@@ -174,6 +176,8 @@ def diary_world(request):
             data.append("<table border =\"3\">")
             for row in c.execute(select_sql):
                 if all_or_select == "select":
+                    row=row[:5]
+                if action == "inet_rireki":    
                     row=row[:5]
                 #print("row=")
                 #print(row)
