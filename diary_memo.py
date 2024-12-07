@@ -44,7 +44,17 @@ def  data_print(url):
     find_data=data.find_all("a")
     #print(find_data)
     return(find_data)
-    
+
+def  data_print_raw(url):
+    import requests
+
+    site = requests.get(url)
+    find_data = BeautifulSoup(site.content, 'html.parser')
+    #find_data=data.find_all("a")
+    #print(find_data)
+    return(find_data)
+
+
 def diary_world(request):
     #print(request.params)
     in_data=request.params
@@ -123,6 +133,29 @@ def diary_world(request):
             (date, name, weather, kind, Contents)
             ]
             c.executemany(insert_sql, users)
+
+        elif action == "scrape_raw":#スクレいピング
+
+            if (in_data["scraping_url"]==""):
+                scraping_url = in_data["scrapeaction"]
+            else:
+                scraping_url = in_data["scraping_url"]
+
+
+            if kind =="未入力":
+                kind = scraping_url
+
+            #print("●●●●●●●●●●●●●●●●●●●●●●●●●")
+            #print(scraping_url)
+            scraping_contents=data_print_raw(scraping_url)
+            Contents = str(scraping_contents)
+            #print(Contents)
+            insert_sql = 'insert into users (date, name, weather, kind, Contents) values (?,?,?,?,?)'
+            users = [
+            (date, name, weather, kind, Contents)
+            ]
+            c.executemany(insert_sql, users)
+
         elif action == "inet_search":#インターネット検索
 
 
@@ -194,6 +227,8 @@ def diary_world(request):
         except:
             print("data not found")
     if action == "scrape":        
+        return Response(str(Contents))
+    if action == "scrape_raw":        
         return Response(str(Contents))
     elif action == "inet_search":
         return Response(str(Contents))
