@@ -208,7 +208,7 @@ def diary_world(request):
         data=[]
         #print (select_sql )
         try:
-            #data.append("<table border =\"3\">")
+            data.append("<table border =\"3\">")
             for row in c.execute(select_sql):
                 if all_or_select == "select":
                     row=row[:5]
@@ -216,9 +216,9 @@ def diary_world(request):
                     row=row[:5]
                 #print("row=")
                 #print(row)
-                #data.append("<tbody><tr><td>")
+                data.append("<tbody><tr><td>")
                 data.append(row)
-                #data.append("</tbody></tr></td>")
+                data.append("</tbody></tr></td>")
                 #ブラウザに改行を送付
                 data.append("<br>")
                 #data.append("</td></tr>")
