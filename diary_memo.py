@@ -15,9 +15,6 @@ import webbrowser
 #webbrowser.open('C:/github/Call_Python/diary_memo/diary_memo.html')
 
 
-dbname = '../database.db'
-
-
 def  inet_data_print(match_word):
     global zip_code
 
@@ -58,6 +55,9 @@ def  data_print_raw(url):
 def diary_world(request):
     #print(request.params)
     in_data=request.params
+    
+    dbname = '../'+in_data["dbname"]
+    
     date=in_data["date"]
     today = datetime.date.today()
     if date =="":
