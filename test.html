@@ -1,0 +1,117 @@
+<!DOCtype html>
+<html lang="ja">
+<head>
+<title>Sample</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="sample.css" type="text/css">
+</head>
+<body>
+  <script src="js/date.js"></script>
+
+<b>記録ノート</b>
+<br>
+<br>
+  <table width=80%%>
+
+
+
+    <tr>
+      <td COLSPAN=2>
+        サーバーIP<input id="text0" type="text" size="20" value="localhost" />
+
+        <form method="post" id="textaction" target="_blank" action="http://localhost:6543">
+
+          <script>
+            function inData0() {
+              text = document.getElementById("text0");
+              textaction = document.getElementById("textaction");
+              textaction.action="http://"+text.value+":6543";
+            }
+          
+          </script>
+
+          
+          <p><div class="txt2"> メモ帳への入力：</div>
+            <div class="txt1">    DB名     <input class="txt3" type="text" name="dbname" value="database.db"> </div>
+            <div class="txt1">    日付     <input class="txt3" type="text" name="date"> </div>
+            <div class="txt1">    名前     <input class="txt3" type="text" name="name"></div>
+            <div class="txt1">    天気     <input class="txt3" type="text" name="weather"></div>
+            <div class="txt1">    指定キー（このキーのみ表示） <input class="txt3" type="text" name="match_key"></div>
+            <div class="txt1">    検索ワード（DBまたはネット検索） <input class="txt3" type="text" name="match_word"></div>
+            <div class="txt1">    削除キー <input id="ex_box" input class="txt3" type="text" name="delkey" disabled /></div>
+            <div class="txt1">    スクレいピングURL <input class="txt3" type="text" size="50" name="scraping_url" value=""></div>
+            <br>
+          </p>
+            <select name="action" id="action">
+            <option value="inet_search">インターネット検索</option>
+            <option value="inet_rireki">インターネット検索履歴</option>
+            <option value="inet_result">インターネット検索履歴（結果あり）</option>
+            <option value="scrape">スクレイピング</option>
+            <option value="scrape_raw">スクレイピング(抽出なし）</option>
+            <option value="view">全表示</option>
+            <option value="add">メモ追加登録</option>
+            <option value="delete">指定キー削除</option>
+            <option value="srch">検索ワード表示</option>
+            <option value="count">検索ワード件数</option>
+            <option value="today">本日登録分表示</option>
+            <option value="keyview">指定キー表示</option>
+            <option value="kindview">題名検索</option>
+            <option value="lastview">最後のレコード</option>
+            <option value="delall">全削除</option>
+            </select>
+
+
+            <select name="scrapeaction" id="scrapeaction">
+            <option value="https://news.yahoo.co.jp/topics/top-picks">yahooトップ</option>
+            <option value="https://news.yahoo.co.jp/categories/entertainment">yahooエンタメ</option>
+            <option value="https://news.yahoo.co.jp/categories/sports">yahooスポーツ</option>
+            <option value="https://news.yahoo.co.jp/categories/business">yahoo　経済</option>
+            <option value="https://news.yahoo.co.jp/categories/it">yahoo　IT</option>
+            </select>
+
+
+            <select name="action2" id="action2">
+              <option value="all">内容含み</option>
+              <option value="select">題名のみ</option>
+              </select>
+
+              <script>
+document.getElementById("action").addEventListener("change", function(){
+
+var age_elem = document.getElementById("action");
+var s_value = age_elem.options[age_elem.selectedIndex].value;
+var box_elem = document.getElementById("ex_box");
+
+if(s_value == "delete"){
+  box_elem.disabled = false;
+} else{
+  box_elem.disabled = true;
+}
+
+if(s_value == "delall"){
+  alert('全レコード削除を選択します');
+}
+
+
+}, false);
+
+
+
+
+              </script>
+
+          <div class="txt1">   題名     <input class="txt3" type="text" name="kind"></div>
+          <p><div class="txt1">内容：<br></div>
+            <textarea class="txt3" name="Contents" ROWS=10 COLS=50></textarea>
+            <br>
+          </p>
+            <input class="button1" type="submit" value="実行" onclick="inData0()">
+            <input class="button2"  type="reset" value="クリア">
+        </form>
+        <input type="date">
+      </td>
+    </tr>
+  </table>
+<P>
+</body>
+</html>
