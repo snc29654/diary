@@ -75,8 +75,30 @@
               <option value="select">題名のみ</option>
               </select>
 
-              <script src="js/action.js"></script>
+<script>
+document.getElementById("action").addEventListener("change", function(){
 
+var age_elem = document.getElementById("action");
+var s_value = age_elem.options[age_elem.selectedIndex].value;
+var box_elem = document.getElementById("ex_box");
+
+if(s_value == "delete"){
+  box_elem.disabled = false;
+} else{
+  box_elem.disabled = true;
+}
+
+if(s_value == "delall"){
+  alert('全レコード削除を選択します');
+}
+
+
+}, false);
+
+
+
+
+</script>
           <div class="txt1">   題名     <input class="txt3" type="text" name="kind"></div>
           <p><div class="txt1">内容：<br></div>
             <textarea class="txt3" name="Contents" ROWS=10 COLS=50></textarea>
