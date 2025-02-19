@@ -14,6 +14,60 @@ import webbrowser
 
 #webbrowser.open('C:/github/Call_Python/diary_memo/diary_memo.html')
 
+import re
+import sys
+import bs4
+import requests
+from urllib.parse import urljoin
+
+# ページ内のリンクを取得する関数
+def get_link(url):
+    # ページ取得
+    res = requests.get(url)
+    res.raise_for_status()
+
+    # リンク取得
+    soup = bs4.BeautifulSoup(res.text, "lxml")
+    links = soup.select("a")
+
+    keys = set()
+    results = []
+    for link in links:
+        # リンクURL取得
+        link_url = link.get("href")
+        if not link_url:
+            continue
+
+        # URL補完
+        if not link_url.startswith("http"):
+            link_url = urljoin(url, link_url)
+
+        # リンクテキスト取得
+        link_text = link.text
+        if not link_text:
+            link_text = ""
+        link_text = link_text.strip()
+        link_text = re.sub(r"\n", " ", link_text)
+
+        # 重複削除
+        key = link_url + link_text
+        if key in keys:
+            continue
+        keys.add(key)
+
+        results.append({"url": link_url, "text": link_text})
+
+    return results
+
+
+def copy_link(url):
+    # リンク取得
+    results = get_link(url)
+
+    text = ""
+    for result in results:
+        text += result["text"] + "\t" + result["url"] + "\n"   
+    return(text)
 
 def  inet_data_print(match_word):
     global zip_code
@@ -133,6 +187,27 @@ def diary_world(request):
             (date, name, weather, kind, Contents)
             ]
             c.executemany(insert_sql, users)
+        elif action == "scrape_link":#スクレいピング
+
+            if (in_data["scraping_url"]==""):
+                scraping_url = in_data["scrapeaction"]
+            else:
+                scraping_url = in_data["scraping_url"]
+
+
+            if kind =="未入力":
+                kind = scraping_url
+
+            #print("●●●●●●●●●●●●●●●●●●●●●●●●●")
+            #print(scraping_url)
+            scraping_contents=copy_link(scraping_url)
+            Contents = str(scraping_contents)
+            #print(Contents)
+            insert_sql = 'insert into users (date, name, weather, kind, Contents) values (?,?,?,?,?)'
+            users = [
+            (date, name, weather, kind, Contents)
+            ]
+            c.executemany(insert_sql, users)
 
         elif action == "scrape_raw":#スクレいピング
 
@@ -229,6 +304,8 @@ def diary_world(request):
     if action == "scrape":        
         return Response(str(Contents))
     if action == "scrape_raw":        
+        return Response(str(Contents))
+    if action == "scrape_link":        
         return Response(str(Contents))
     elif action == "inet_search":
         return Response(str(Contents))
