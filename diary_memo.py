@@ -66,7 +66,7 @@ def copy_link(url):
 
     text = ""
     for result in results:
-        text +=  "<a href= \"" + result["url"] + "\"</a>"+result["text"] + "\t" +"<br>" +"\n"   
+        text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>"+result["text"] +"\t" +"<br>" +"\n"   
     return(text)
 
 def  inet_data_print(match_word):
