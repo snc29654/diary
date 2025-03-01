@@ -166,6 +166,28 @@ def diary_world(request):
             #この場合登録一件ですから、excutemanyでなくてもいいかも？
             #これはpythonでのサポート機能のようで、多量のレコードを一気に登録するときに役立つようです
             c.executemany(insert_sql, users)
+
+        elif action == "aichat":#chat
+
+            from openai import OpenAI
+            client = OpenAI(api_key=Contents)
+            completion = client.chat.completions.create(
+                messages=[{
+                    "role": "user",
+                    "content": kind,
+                }],
+                model="gpt-4o-mini",
+            )
+
+            Contents = completion.choices[0].message.content
+
+
+            insert_sql = 'insert into users (date, name, weather, kind, Contents) values (?,?,?,?,?)'
+            users = [
+            (date, name, weather, kind, Contents)
+            ]
+            c.executemany(insert_sql, users)
+
         elif action == "scrape":#スクレいピング
 
             if (in_data["scraping_url"]==""):
@@ -310,6 +332,8 @@ def diary_world(request):
     elif action == "inet_search":
         return Response(str(Contents))
     elif action == "add":#追加
+        return Response(str(Contents))
+    elif action == "aichat":#追加
         return Response(str(Contents))
     else:
         return Response(str(data))
