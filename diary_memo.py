@@ -180,7 +180,7 @@ def diary_world(request):
             )
 
             Contents = completion.choices[0].message.content
-
+            Contents = Contents.replace("。","。<br>")
 
             insert_sql = 'insert into users (date, name, weather, kind, Contents) values (?,?,?,?,?)'
             users = [
