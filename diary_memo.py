@@ -198,7 +198,7 @@ def diary_world(request):
 
             if kind =="未入力":
                 kind = scraping_url
-            kind="<a href=\""+kind+"\">"+kind+"</a>"
+            kind="<a href=\""+kind+"\" target=\"_blank\">"+kind+"</a>"
             #print("●●●●●●●●●●●●●●●●●●●●●●●●●")
             #print(scraping_url)
             scraping_contents=data_print(scraping_url)
