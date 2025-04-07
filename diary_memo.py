@@ -324,6 +324,7 @@ def diary_world(request):
         except:
             print("data not found")
     if action == "scrape":        
+        Contents=Contents.replace("<a","<a target=\"_blank\"")
         return Response(str(Contents))
     if action == "scrape_raw":        
         return Response(str(Contents))
